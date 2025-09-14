@@ -9,7 +9,7 @@ const pageTitle = 'Gallery';
       {pixelArt.map((item) => (
         <a href={`/gallery/${item.slug}`} class="group w-full max-w-[360px]">
           <figure class="w-full">
-            <div class="aspect-[16/9] w-full overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-800 transition-colors">
+            <div class="theme-card aspect-[16/9] w-full overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-800 transition-colors">
               <img
                 src={item.src}
                 alt={item.title}

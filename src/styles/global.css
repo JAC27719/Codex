@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+/* Fallback dark theme overrides in case Tailwind darkMode config isn't picked up */
+html.dark .theme-body {
+  background-color: #09090b; /* zinc-950/900 area */
+  color: #e5e7eb; /* zinc-200 */
+}
+html.dark .theme-header {
+  background-color: #18181b; /* zinc-900 */
+  border-color: #27272a; /* zinc-800 */
+}
+html.dark .theme-footer {
+  background-color: #18181b; /* zinc-900 */
+  border-color: #27272a; /* zinc-800 */
+  color: #e5e7eb;
+}
+html.dark .theme-card {
+  background-color: #27272a; /* zinc-800 */
+  border-color: #3f3f46; /* zinc-700 */
+}
