@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { landscapes } from '../../data/pixelArt';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { landscapes } from '../../../data/pixelArt';
 
 export function getStaticPaths() {
   return landscapes.map(({ slug, title, src, description }) => ({
@@ -10,17 +10,15 @@ export function getStaticPaths() {
 }
 
 const { title, src, description } = Astro.props;
-
-
 const pageTitle = title;
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <article class="mx-auto max-w-3xl py-8">
-    <header class="mb-6">
+  <article class="mx-auto max-w-7xl py-8">
+    <header class="mb-6 text-center">
       <h2 class="text-2xl font-semibold">{title}</h2>
     </header>
     <div class="flex justify-center">
-      <div class="overflow-hidden rounded-md border border-black/10 bg-white dark:border-white/10 dark:bg-gray-800 mx-auto w-full max-w-[95vw] sm:w-[640px] md:w-[960px] lg:w-[1280px] aspect-[16/9]">
+      <div class="theme-card mx-auto w-full max-w-[95vw] sm:w-[640px] md:w-[960px] lg:w-[1280px] aspect-[16/9] overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-800 transition-colors">
         <img
           src={src}
           alt={title}
@@ -33,7 +31,7 @@ const pageTitle = title;
       </div>
     </div>
     {description && (
-      <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-300">{description}</p>
+      <p class="mt-4 text-center text-sm text-zinc-600 dark:text-zinc-300">{description}</p>
     )}
     <div class="mt-6 text-center">
       <a href="/gallery" class="text-sm underline underline-offset-4 decoration-2">Back to Gallery</a>
