@@ -22,10 +22,10 @@ export const landscapes: Landscape[] = [
 
 // 1:1 character sprites (start empty or add your files under /public/pixel-art/characters)
 export const characters: Character[] = [
-  { slug: 'faith-unawakened', title: 'Faith Unawakened', src: '/pixel-art/characters/Faith-Unawakened.png',
+  { slug: 'faith-unawakened', title: 'Faith, Unawakened', src: '/pixel-art/characters/Faith-Unawakened.png',
     description: ''
    },
-  { slug: 'faith-suns-disciple', title: 'Faith Sun\'s Disciple', src: '/pixel-art/characters/Faith-Suns-Disciple.png',
+  { slug: 'faith-suns-disciple', title: 'Faith, Sun\'s Disciple', src: '/pixel-art/characters/Faith-Suns-Disciple.png',
     description: ''
    },
 ];
