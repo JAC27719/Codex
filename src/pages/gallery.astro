@@ -1,11 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { pixelArt } from '../data/pixelArt';
 const pageTitle = 'Gallery';
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div class="py-16 text-center">
-    <p class="text-lg font-medium">Page under construction</p>
-  </div>
-  
+  <section aria-label="Pixel Art Gallery" class="py-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center">
+      {pixelArt.map((item) => (
+        <a href={`/gallery/${item.slug}`} class="group w-full max-w-[360px]">
+          <figure class="w-full">
+            <div class="aspect-[16/9] w-full overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-800 transition-colors">
+              <img
+                src={item.src}
+                alt={item.title}
+                width={320}
+                height={180}
+                class="h-full w-full object-contain [image-rendering:pixelated] transition-transform duration-200 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="mt-2 text-center text-sm font-medium">{item.title}</figcaption>
+          </figure>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
-

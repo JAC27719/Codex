@@ -17,12 +17,12 @@ const links = [
 
 const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 2}`;
 ---
-<header class="w-full bg-[#E07A5F] text-white dark:bg-[#2B2A28]">
+<header class="w-full bg-zinc-50 border-b border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 transition-colors">
   <div class="mx-auto max-w-7xl px-4">
     <div class="flex h-14 items-center justify-between">
       <a
         href={`https://github.com/${githubUsername}`}
-        class="flex items-center gap-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white/60"
+        class="flex items-center gap-3 rounded-full focus:outline-none focus:ring-2 focus:ring-black/40 dark:focus:ring-white/60"
         aria-label={`${githubUsername} profile`}
       >
         <img
@@ -30,7 +30,7 @@ const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 
           alt={`${githubUsername} profile picture`}
           width={avatarSize}
           height={avatarSize}
-          class="h-10 w-10 rounded-full object-cover ring-1 ring-white/40"
+          class="h-10 w-10 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/20"
           loading="eager"
           decoding="async"
         />
@@ -39,7 +39,7 @@ const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 
         <Navigation links={links} />
         <button
           type="button"
-          class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-2.5 py-1.5 text-sm font-medium text-white backdrop-blur hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/60 active:bg-white/20"
+          class="inline-flex items-center justify-center rounded-md border border-black/10 bg-transparent px-2.5 py-1.5 text-sm font-medium text-current hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-black/40 active:bg-black/10 dark:border-white/20 dark:hover:bg-white/10 dark:focus:ring-white/60 dark:active:bg-white/15"
           aria-label="Toggle dark mode"
           title="Toggle theme"
           data-theme-toggle
@@ -53,22 +53,33 @@ const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 
   </div>
 </header>
 
-<script>
-  const btn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  const getTheme = () => (root.classList.contains('dark') ? 'dark' : 'light');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      const next = getTheme() === 'dark' ? 'light' : 'dark';
-      root.classList.toggle('dark', next === 'dark');
-      try { localStorage.setItem('theme', next); } catch (_) {}
-    });
-  }
-  // Keep the button icon in sync if theme changes externally (e.g., dev HMR)
-  const observer = new MutationObserver(() => {
-    const dark = root.classList.contains('dark');
-    btn?.querySelector('.dark\\:hidden')?.classList.toggle('hidden', dark);
-    btn?.querySelector('.dark\\:inline')?.classList.toggle('hidden', !dark);
-  });
-  observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+<script is:inline>
+  (function(){
+    const attach = () => {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      const getTheme = () => (root.classList.contains('dark') ? 'dark' : 'light');
+      if (btn && !btn.__themeWired) {
+        btn.addEventListener('click', () => {
+          const next = getTheme() === 'dark' ? 'light' : 'dark';
+          root.classList.toggle('dark', next === 'dark');
+          try { localStorage.setItem('theme', next); } catch (_) {}
+        });
+        btn.__themeWired = true;
+      }
+      // Keep the button icon in sync if theme changes externally (e.g., dev HMR)
+      const observer = new MutationObserver(() => {
+        const dark = root.classList.contains('dark');
+        btn?.querySelector('.dark\\:hidden')?.classList.toggle('hidden', dark);
+        btn?.querySelector('.dark\\:inline')?.classList.toggle('hidden', !dark);
+      });
+      observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attach, { once: true });
+    } else {
+      attach();
+    }
+  })();
+  
 </script>
