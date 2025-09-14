@@ -1,0 +1,47 @@
+---
+interface Props {
+  linkedinUrl?: string;
+  githubUrl?: string;
+  email?: string; // plain email, e.g., "you@example.com"
+}
+
+const { linkedinUrl, githubUrl, email } = Astro.props as Props;
+---
+<footer class="w-full border-t border-black/10 bg-gray-50 text-gray-700 dark:border-white/10 dark:bg-gray-800 dark:text-gray-200">
+  <div class="mx-auto max-w-7xl px-4 py-6">
+    <div class="flex items-center justify-center gap-6">
+      {linkedinUrl && (
+        <a
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-medium hover:underline"
+          aria-label="LinkedIn"
+        >
+          LinkedIn
+        </a>
+      )}
+      {githubUrl && (
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-medium hover:underline"
+          aria-label="GitHub"
+        >
+          GitHub
+        </a>
+      )}
+      {email && (
+        <a
+          href={`mailto:${email}`}
+          class="text-sm font-medium hover:underline"
+          aria-label="Email"
+        >
+          Email
+        </a>
+      )}
+    </div>
+  </div>
+</footer>
+

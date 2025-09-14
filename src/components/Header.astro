@@ -6,7 +6,7 @@ interface Props {
   avatarSize?: number; // px
 }
 
-const { githubUsername = 'JAC27719', avatarSize = 40 } = Astro.props as Props;
+const { githubUsername, avatarSize = 40 } = Astro.props as Props;
 
 const links = [
   { href: '/', label: 'Home' },
@@ -17,7 +17,7 @@ const links = [
 
 const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 2}`;
 ---
-<header class="w-full bg-[#E07A5F] text-white">
+<header class="w-full bg-[#E07A5F] text-white dark:bg-[#2B2A28]">
   <div class="mx-auto max-w-7xl px-4">
     <div class="flex h-14 items-center justify-between">
       <a
@@ -35,7 +35,40 @@ const avatarUrl = `https://github.com/${githubUsername}.png?size=${avatarSize * 
           decoding="async"
         />
       </a>
-      <Navigation links={links} />
+      <div class="flex items-center gap-4">
+        <Navigation links={links} />
+        <button
+          type="button"
+          class="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-2.5 py-1.5 text-sm font-medium text-white backdrop-blur hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/60 active:bg-white/20"
+          aria-label="Toggle dark mode"
+          title="Toggle theme"
+          data-theme-toggle
+        >
+          <span class="sr-only">Toggle theme</span>
+          <span class="dark:hidden">🌙</span>
+          <span class="hidden dark:inline">☀️</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
+
+<script>
+  const btn = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  const getTheme = () => (root.classList.contains('dark') ? 'dark' : 'light');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const next = getTheme() === 'dark' ? 'light' : 'dark';
+      root.classList.toggle('dark', next === 'dark');
+      try { localStorage.setItem('theme', next); } catch (_) {}
+    });
+  }
+  // Keep the button icon in sync if theme changes externally (e.g., dev HMR)
+  const observer = new MutationObserver(() => {
+    const dark = root.classList.contains('dark');
+    btn?.querySelector('.dark\\:hidden')?.classList.toggle('hidden', dark);
+    btn?.querySelector('.dark\\:inline')?.classList.toggle('hidden', !dark);
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+</script>
