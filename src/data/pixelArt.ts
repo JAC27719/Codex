@@ -16,16 +16,19 @@ export const landscapes: Landscape[] = [
     description: 'A lone figure stands silhouetted atop a hill, gazing skyward as a great dragon ascends into the heavens. Its form is framed by radiant clouds painted in soft pinks and purples, swirling dramatically around the celestial moment. A massive moon looms above, casting its pale glow across the sky, while stars and streaking comets enhance the sense of cosmic grandeur. The contrast between the tiny figure and the vast dragon emphasizes themes of awe, destiny, and the call to adventure. The palette of dusky violets and glowing rose tones adds both warmth and mystery, making the scene feel like a dream suspended between twilight and fantasy.' },
   { slug: 'river-landscape-illustration-pixel-art-style', title: 'River Landscape', src: '/pixel-art/landscapes/river-landscape-illustration-pixel-art-style.jpg', 
     description: 'Jagged mountains rise proudly in the distance, their rocky faces painted in shades of cool gray and soft green. Below them, a pristine lake stretches outward, perfectly mirroring the peaks, drifting clouds, and the lush greenery that frames both sides of the scene. The reflection is so clear it blurs the line between earth and sky, giving the composition a dreamlike symmetry. Foreground boulders and dense trees anchor the image, their deep greens and blues contrasting with the bright, open sky. The carefully crafted pixel work captures the stillness of the moment-an untouched wilderness where the only movement is the gentle ripple of water and the slow drift of clouds.' },
-  { slug: '8-bit-graphics-pixels-scene-with-forest', title: 'Skyscraper Forest', src: '/pixel-art/landscapes/8-bit-graphics-pixels-scene-with-forest.jpg', 
-    description: 'Tall, slender pines rise upward, their trunks stretching into a pale, overcast sky streaked with soft clouds. Clusters of golden foliage break through the deep greens, suggesting the quiet shift of seasons-perhaps the first signs of autumn creeping into summer\'s lush canopy. In the foreground, dense undergrowth and bushes form a textured carpet of greens and ochres, grounding the scene with a sense of depth. The composition carries a calm, meditative rhythm: vertical lines of trees lead the eye skyward, while layered silhouettes of distant pines fade gently into mist. It feels like a moment of stillness, where time slows and the only sounds are the rustle of leaves and the distant call of birds.' },
+  { slug: 'red-forest', title: 'Red Forest', src: '/pixel-art/landscapes/red-forest.jpg', 
+    description: 'Scarlet trees rise tall and proud, their leaves burning bright against the cool blues of distant mountains and the pale glow of the moon above. A quiet stream winds its way through the forest floor, mirroring flashes of crimson and sky, as if carrying whispers from the peaks beyond. Dark stone outcrops punctuate the fiery landscape, grounding its otherworldly beauty with a touch of permanence. The composition feels both serene and mysterious—an untouched place where seasons turn with ritual precision, and where the path of water leads deeper into secrets hidden beneath the canopy of red.' },
 ];
 
 // 1:1 character sprites (start empty or add your files under /public/pixel-art/characters)
 export const characters: Character[] = [
   { slug: 'faith-unawakened', title: 'Faith, Unawakened', src: '/pixel-art/characters/Faith-Unawakened.png',
-    description: ''
+    description: 'Perched atop a glowing platform, the figure’s violet hair drifts like a whisper of another realm. Shadows cling to their dark attire, broken only by a faint golden emblem at the waist—an echo of forgotten power. The blade at their side glimmers faintly, less a weapon than a key, as if waiting for the moment when long-buried truths awaken.'
    },
   { slug: 'faith-suns-disciple', title: 'Faith, Sun\'s Disciple', src: '/pixel-art/characters/Faith-Suns-Disciple.png',
-    description: ''
+    description: 'Standing firm upon a crimson dais, this figure radiates both warmth and danger. Their flame-colored hair seems to burn against the dark fabric of their garb, where golden bands trace symbols of an order long thought lost. Though no blade is drawn, their presence carries the weight of ancient vows—an oath sworn beneath the sun itself. Whether guardian or herald, they wait in silence, as if the turning of the age depends on their next step.'
+   },
+  { slug: 'donut', title: 'Donut', src: '/pixel-art/characters/Donut.png',
+    description: 'A Donut'
    },
 ];
