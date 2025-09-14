@@ -1,11 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
 const pageTitle = 'About';
+const profileSrc = '/headshot.jpg'; // Place your image at public/profile.jpg
+const entry = await getEntry('pages', 'about');
+const { Content, data } = await entry.render();
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <div class="py-16 text-center">
-    <p class="text-lg font-medium">Page under construction</p>
-  </div>
-  
-</BaseLayout>
+  <article class="mx-auto max-w-3xl px-4 py-8 space-y-8">
+    <div class="flex justify-center">
+      <img
+        src={profileSrc}
+        alt="Profile photo"
+        width={800}
+        height={800}
+        class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-xl object-cover border border-zinc-200 dark:border-zinc-800"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
 
+    <section class="markdown">
+      <Content />
+    </section>
+  </article>
+</BaseLayout>
